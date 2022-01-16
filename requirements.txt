@@ -11,6 +11,8 @@ configparser==5.2.0
 crayons==0.4.0
 cryptography==36.0.1
 Django==4.0.1
+django-js-asset==1.2.2
+django-mptt==0.13.4
 factory-boy==3.2.1
 Faker==11.3.0
 h11==0.12.0
