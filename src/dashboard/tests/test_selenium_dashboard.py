@@ -1,15 +1,15 @@
+from webbrowser import get
 import pytest
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 
+# @pytest.mark.selenium
+# def test_create_new_admin_user(create_admin_user):
+#     assert create_admin_user.__str__() == "admin"
+
 
 @pytest.mark.selenium
-def test_create_new_admin_user(create_admin_user):
-    assert create_admin_user.__str__() == "admin"
-
-
-@pytest.mark.selenium
-def test_dashboard_admin_login(chrome_browser_instance, create_admin_user, live_server):
+def test_dashboard_admin_login(chrome_browser_instance, db_fixture_setup, live_server):
     """Test if the user can log in using the admin page."""
     browser = chrome_browser_instance
 

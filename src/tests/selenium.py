@@ -11,7 +11,7 @@ def chrome_browser_instance(request):
     Provide a selenium webdriver instance.
     """
     options = Options()
-    options.headless = False
+    options.headless = True
     browser = webdriver.Chrome(
         service=Service(ChromeDriverManager().install()), options=options
     )
