@@ -36,7 +36,6 @@ def test_inventory_db_category_insert_data(
 ):
     """Test inserting data into category table."""
     result = category_factory.create(slug=slug, is_active=is_active)
-    print(result.name)
     assert result.slug == slug
     assert result.is_active is is_active
 
@@ -204,3 +203,50 @@ def test_inventory_db_product_inventory_dataset(
     assert result.weight == weight
     assert result_created_at == created_at
     assert result_updated_at == updated_at
+
+
+def test_inventory_db_product_inventory_insert_data(
+    db, product_inventory_factory
+):
+    new_product = product_inventory_factory.create(
+        sku="123456789",
+        upc="123456789",
+        product_type__name="new_name",
+        product__web_id="123456789",
+        brand__name="new_name",
+    )
+    assert new_product.sku == "123456789"
+    assert new_product.upc == "123456789"
+    assert new_product.product_type.name == "new_name"
+    assert new_product.product.web_id == "123456789"
+    assert new_product.brand.name == "new_name"
+    assert new_product.is_active == 1
+    assert new_product.retail_price == 97.00
+    assert new_product.store_price == 92.00
+    assert new_product.sale_price == 46.00
+    assert new_product.weight == 987
+
+
+def test_inventory_db_producttype_insert_data(db, product_type_factory):
+
+    new_type = product_type_factory.create(name="demo_type")
+    assert new_type.name == "demo_type"
+
+
+def test_inventory_db_producttype_uniqueness_integrity(
+    db, product_type_factory
+):
+    product_type_factory.create(name="not_unique")
+    with pytest.raises(IntegrityError):
+        product_type_factory.create(name="not_unique")
+
+
+def test_inventory_db_brand_insert_data(db, brand_factory):
+    new_brand = brand_factory.create(name="demo_brand")
+    assert new_brand.name == "demo_brand"
+
+
+def test_inventory_db_brand_uniqueness_integrity(db, brand_factory):
+    brand_factory.create(name="not_unique")
+    with pytest.raises(IntegrityError):
+        brand_factory.create(name="not_unique")
