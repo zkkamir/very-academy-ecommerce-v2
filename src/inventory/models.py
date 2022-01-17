@@ -153,8 +153,8 @@ class ProductAttributeValue(models.Model):
         on_delete=models.PROTECT,
     )
     attribute_value = models.CharField(
+        _("attribute value"),
         max_length=255,
-        verbose_name=_("attribute value"),
         help_text=_("format: required, max-255"),
     )
 
@@ -168,9 +168,9 @@ class ProductInventory(models.Model):
     """
 
     sku = models.CharField(
+        _("stock keeping unit"),
         max_length=20,
         unique=True,
-        verbose_name=_("stock keeping unit"),
         help_text=_("format: required, unique, max-20"),
     )
     upc = models.CharField(
@@ -194,14 +194,14 @@ class ProductInventory(models.Model):
         through="ProductAttributeValues",
     )
     is_active = models.BooleanField(
+        _("product visibility"),
         default=True,
-        verbose_name=_("product visibility"),
         help_text=_("format: true=product visible"),
     )
     retail_price = models.DecimalField(
+        _("recommended retail price"),
         max_digits=5,
         decimal_places=2,
-        verbose_name=_("recommended retail price"),
         help_text=_("format: maximum price 999.99"),
         error_messages={
             "name": {
@@ -210,9 +210,9 @@ class ProductInventory(models.Model):
         },
     )
     store_price = models.DecimalField(
+        _("regular store price"),
         max_digits=5,
         decimal_places=2,
-        verbose_name=_("regular store price"),
         help_text=_("format: maximum price 999.99"),
         error_messages={
             "name": {
@@ -221,9 +221,9 @@ class ProductInventory(models.Model):
         },
     )
     sale_price = models.DecimalField(
+        _("sale price"),
         max_digits=5,
         decimal_places=2,
-        verbose_name=_("sale price"),
         help_text=_("format: maximum price 999.99"),
         error_messages={
             "name": {
@@ -232,17 +232,17 @@ class ProductInventory(models.Model):
         },
     )
     weight = models.FloatField(
-        verbose_name=_("product weight"),
+        _("product weight"),
     )
     created_at = models.DateTimeField(
+        _("date sub-product created"),
         auto_now_add=True,
         editable=False,
-        verbose_name=_("date sub-product created"),
         help_text=_("format: Y-m-d H:M:S"),
     )
     updated_at = models.DateTimeField(
+        _("date sub-product updated"),
         auto_now=True,
-        verbose_name=_("date sub-product updated"),
         help_text=_("format: Y-m-d H:M:S"),
     )
 
@@ -261,30 +261,30 @@ class Media(models.Model):
         related_name="media_product_inventory",
     )
     image = models.ImageField(
-        verbose_name=_("product image"),
+        _("product image"),
         upload_to="images/",
         default="images/default.png",
         help_text=_("format: required, default-default.png"),
     )
     alt_text = models.CharField(
+        _("alternative text"),
         max_length=255,
-        verbose_name=_("alternative text"),
         help_text=_("format: required, max-255"),
     )
     is_feature = models.BooleanField(
+        _("product default image"),
         default=False,
-        verbose_name=_("product default image"),
         help_text=_("format: default=false, true=default image"),
     )
     created_at = models.DateTimeField(
+        _("product visibility"),
         auto_now_add=True,
         editable=False,
-        verbose_name=_("product visibility"),
         help_text=_("format: Y-m-d H:M:S"),
     )
     updated_at = models.DateTimeField(
+        _("date sub-product created"),
         auto_now=True,
-        verbose_name=_("date sub-product created"),
         help_text=_("format: Y-m-d H:M:S"),
     )
 
@@ -300,20 +300,20 @@ class Stock(models.Model):
         on_delete=models.PROTECT,
     )
     last_checked = models.DateTimeField(
+        _("inventory stock check date"),
         unique=False,
         null=True,
         blank=True,
-        verbose_name=_("inventory stock check date"),
         help_text=_("format: Y-m-d H:M:S, null-true, blank-true"),
     )
     units = models.IntegerField(
+        _("units/qty of stock"),
         default=0,
-        verbose_name=_("units/qty of stock"),
         help_text=_("format: required, default-0"),
     )
     units_sold = models.IntegerField(
+        _("units sold to date"),
         default=0,
-        verbose_name=_("units sold to date"),
         help_text=_("format: required, default-0"),
     )
 
