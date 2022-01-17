@@ -1,12 +1,10 @@
-from tty import CFLAG
 import factory
-import pytest
 from faker import Faker
 from pytest_factoryboy import register
 
-fake = Faker()
-
 from inventory import models
+
+fake = Faker()
 
 
 class CategoryFactory(factory.django.DjangoModelFactory):

@@ -15,10 +15,12 @@ django-js-asset==1.2.2
 django-mptt==0.13.4
 factory-boy==3.2.1
 Faker==11.3.0
+flake8==4.0.1
 h11==0.12.0
 idna==3.3
 inflection==0.5.1
 iniconfig==1.1.1
+mccabe==0.6.1
 mypy-extensions==0.4.3
 outcome==1.1.0
 packaging==21.3
@@ -26,7 +28,9 @@ pathspec==0.9.0
 platformdirs==2.4.1
 pluggy==1.0.0
 py==1.11.0
+pycodestyle==2.8.0
 pycparser==2.21
+pyflakes==2.4.0
 pyOpenSSL==21.0.0
 pyparsing==3.0.6
 pytest==6.2.5

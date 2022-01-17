@@ -1,4 +1,3 @@
-from webbrowser import get
 import pytest
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
@@ -9,7 +8,9 @@ from selenium.webdriver.common.by import By
 
 
 @pytest.mark.selenium
-def test_dashboard_admin_login(chrome_browser_instance, db_fixture_setup, live_server):
+def test_dashboard_admin_login(
+    chrome_browser_instance, db_fixture_setup, live_server
+):
     """Test if the user can log in using the admin page."""
     browser = chrome_browser_instance
 
